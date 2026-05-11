@@ -5,7 +5,8 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const img = new Image();
-img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/script.js"; // replace with your new dot portrait RAW URL
+img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/background.png"; 
+// Make sure this matches your file name exactly
 
 let particles = [];
 const density = 3; // more dots = clearer face
@@ -26,9 +27,9 @@ img.onload = () => {
   for (let y = 0; y < h; y += density) {
     for (let x = 0; x < w; x += density) {
       const index = (y * w + x) * 4;
-      const brightness = data[index]; // red channel
+      const brightness = data[index];
 
-      // ⭐ NEW: detect lighter dots too
+      // ⭐ Detect lighter dots too
       if (brightness < 245) {
         particles.push({
           x: Math.random() * canvas.width,
