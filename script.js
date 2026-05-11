@@ -67,7 +67,7 @@ function animateParticles() {
     p.x += (p.tx - p.x) * p.speed;
     p.y += (p.ty - p.y) * p.speed;
 
-    ctx.fillStyle = "#38bdf8";
+    ctx.fillStyle = "#f8fafc";
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
     ctx.fill();
