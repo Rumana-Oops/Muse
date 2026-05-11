@@ -1,15 +1,21 @@
 const canvas = document.getElementById("particleCanvas");
 const ctx = canvas.getContext("2d");
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+// Resize canvas
+function resize() {
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
+resize();
+window.addEventListener("resize", resize);
 
+// Load halftone image
 const img = new Image();
-img.src = "https://github.com/Rumana-Oops/Muse/raw/main/background.png"; 
-// Make sure this matches your file name exactly
+img.crossOrigin = "anonymous";
+img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/background.png";
 
 let particles = [];
-const density = 3; // more dots = clearer face
+const density = 3; // smaller = more dots
 
 img.onload = () => {
   const tempCanvas = document.createElement("canvas");
@@ -22,15 +28,23 @@ img.onload = () => {
   tempCanvas.height = h;
 
   tctx.drawImage(img, 0, 0, w, h);
-  const data = tctx.getImageData(0, 0, w, h).data;
+  const imageData = tctx.getImageData(0, 0, w, h);
+  const data = imageData.data;
+
+  particles = [];
 
   for (let y = 0; y < h; y += density) {
     for (let x = 0; x < w; x += density) {
       const index = (y * w + x) * 4;
-      const brightness = data[index];
+      const r = data[index];
+      const g = data[index + 1];
+      const b = data[index + 2];
+      const a = data[index + 3];
 
-      // ⭐ Detect lighter dots too
-      if (brightness < 245) {
+      const brightness = (r + g + b) / 3;
+
+      // Detect lighter halftone dots
+      if (a > 10 && brightness < 240) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
