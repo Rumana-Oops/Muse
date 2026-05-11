@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const img = new Image();
-img.src = "YOUR_RAW_URL_HERE"; // replace with your new dot portrait RAW URL
+img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/script.js"; // replace with your new dot portrait RAW URL
 
 let particles = [];
 const density = 3; // more dots = clearer face
