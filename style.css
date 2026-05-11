@@ -1,1 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #020617;
+  overflow: hidden;
+  height: 100vh;
+  font-family: system-ui, sans-serif;
+}
+
+/* Canvas */
+#particleCanvas {
+  position: absolute;
+  inset: 0;
+}
+
+/* Hide scene until particles finish */
+.hidden {
+  display: none;
+}
+
+/* Flowers */
+#scene {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.flowers {
+  position: relative;
+  width: 260px;
+  height: 260px;
+  margin-bottom: 40px;
+}
+
+.flower {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  margin: -20px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #5ce1ff, #2563eb);
+  box-shadow:
+    0 0 20px rgba(92,225,255,0.9),
+    0 0 40px rgba(37,99,235,0.8);
+}
+
+.flower--1 { transform: translate(-80px, 40px); animation: float1 5s ease-in-out infinite; }
+.flower--2 { transform: translate(40px, -30px) scale(0.9); animation: float2 6s ease-in-out infinite; }
+.flower--3 { transform: translate(70px, 60px) scale(0.8); animation: float3 7s ease-in-out infinite; }
+
+@keyframes float1 { 0%,100%{transform:translate(-80px,40px);} 50%{transform:translate(-90px,10px);} }
+@keyframes float2 { 0%,100%{transform:translate(40px,-30px)scale(.9);} 50%{transform:translate(20px,-60px)scale(1);} }
+@keyframes float3 { 0%,100%{transform:translate(70px,60px)scale(.8);} 50%{transform:translate(90px,20px)scale(.95);} }
+
+/* Dua message */
+.message {
+  font-size: 1.6rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #e5e7eb;
+  text-shadow:
+    0 0 10px rgba(248,250,252,0.8),
+    0 0 25px rgba(59,130,246,0.9);
+}
 
