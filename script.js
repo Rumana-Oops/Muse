@@ -5,17 +5,17 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const img = new Image();
-img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/Background.png";
+img.src = "YOUR_RAW_URL_HERE"; // replace with your new dot portrait RAW URL
 
 let particles = [];
-const density = 4; // lower = more dots
+const density = 3; // more dots = clearer face
 
 img.onload = () => {
   const tempCanvas = document.createElement("canvas");
   const tctx = tempCanvas.getContext("2d");
 
-  const w = 300;
-  const h = (img.height / img.width) * 300;
+  const w = 350;
+  const h = (img.height / img.width) * 350;
 
   tempCanvas.width = w;
   tempCanvas.height = h;
@@ -26,16 +26,17 @@ img.onload = () => {
   for (let y = 0; y < h; y += density) {
     for (let x = 0; x < w; x += density) {
       const index = (y * w + x) * 4;
-      const brightness = data[index];
+      const brightness = data[index]; // red channel
 
-      if (brightness < 200) {
+      // ⭐ NEW: detect lighter dots too
+      if (brightness < 245) {
         particles.push({
           x: Math.random() * canvas.width,
           y: Math.random() * canvas.height,
           tx: x + canvas.width / 2 - w / 2,
           ty: y + canvas.height / 2 - h / 2,
           size: 2,
-          speed: 0.05 + Math.random() * 0.03
+          speed: 0.04 + Math.random() * 0.03
         });
       }
     }
@@ -60,7 +61,7 @@ function animateParticles() {
   requestAnimationFrame(animateParticles);
 }
 
-// After 5 seconds, fade out particles and show scene
+// Fade out after 5 seconds
 setTimeout(() => {
   canvas.style.transition = "opacity 2s";
   canvas.style.opacity = 0;
@@ -72,7 +73,7 @@ setTimeout(() => {
   }, 2000);
 }, 5000);
 
-// Typewriter dua
+// Dua typewriter
 const text = "May Allah bless you";
 let index = 0;
 
@@ -90,4 +91,3 @@ function startTypewriter() {
 
   type();
 }
-
