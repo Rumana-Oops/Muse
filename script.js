@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const img = new Image();
-img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/portrait.png";
+img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/Background.png";
 
 let particles = [];
 const density = 4; // lower = more dots
