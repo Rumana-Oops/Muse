@@ -5,7 +5,7 @@ canvas.width = window.innerWidth;
 canvas.height = window.innerHeight;
 
 const img = new Image();
-img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/background.png"; 
+img.src = "https://github.com/Rumana-Oops/Muse/raw/main/background.png"; 
 // Make sure this matches your file name exactly
 
 let particles = [];
