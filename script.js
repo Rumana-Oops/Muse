@@ -12,7 +12,7 @@ window.addEventListener("resize", resize);
 // Load halftone image
 const img = new Image();
 img.crossOrigin = "anonymous";
-img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/background.png";
+img.src = "https://raw.githubusercontent.com/Rumana-Oops/Muse/main/halftone.png";
 
 let particles = [];
 const density = 3; // smaller = more dots
